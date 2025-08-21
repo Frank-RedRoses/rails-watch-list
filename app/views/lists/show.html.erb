@@ -7,6 +7,8 @@
     <div><%= movie.title %></div>
     <div><%= movie.overview %></div>
     <div><%=  bookmark.comment %></div>
+    <div><%= link_to "Delete", bookmark_path(bookmark),  data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}, class: "btn btn-danger"  %></div>
+    <br>
   <% end %>
 </ul>
 
