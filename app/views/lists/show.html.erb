@@ -1,7 +1,15 @@
 <h1><%= @list.name %> details</h1>
+
 <ul>
-  <li>Here should display a movie card</li>
-  <li>Here should display a movie card</li>
+  <% @bookmarks.each do |bookmark| %>
+    <% movie = bookmark.movie %>
+    <li><img src="<%= movie.poster_url %>" alt="<%= movie.title %>" style="height: 200px;"></li>
+    <div><%= movie.title %></div>
+    <div><%= movie.overview %></div>
+    <div><%=  bookmark.comment %></div>
+  <% end %>
 </ul>
 
+<%= link_to "Add a movie", new_list_bookmark_path(@list) %>
+<br>
 <%= link_to "Back to your lists", lists_path %>
