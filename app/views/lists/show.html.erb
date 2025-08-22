@@ -1,5 +1,5 @@
 <h1><%= @list.name %> details</h1>
-
+<%= link_to "Back to your lists", lists_path,  class: "btn btn-primary mb-3 mx-3"%>
 <ul>
   <% @bookmarks.each do |bookmark| %>
     <% movie = bookmark.movie %>
@@ -12,6 +12,17 @@
   <% end %>
 </ul>
 
-<%= link_to "Add a movie", new_list_bookmark_path(@list) %>
+<div class='container'>
+  <h3>Create a new bookmark</h3>
+  <%= simple_form_for [@list, @bookmark] do |f| %>
+    <%= f.error_notification %>
+    <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
+    <%= f.input :comment %>
+    <%= f.association :movie %>
+    <%= f.submit "Add bookmark", class: "btn btn-primary" %>
+  <% end %>
+</div>
 <br>
-<%= link_to "Back to your lists", lists_path %>
+<div>
+
+</div>
