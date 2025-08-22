@@ -1,7 +1,7 @@
 <h1><%= @list.name %> details</h1>
 <%= link_to "Back to your lists", lists_path,  class: "btn btn-primary mb-3 mx-3"%>
 <ul>
-  <% @bookmarks.each do |bookmark| %>
+  <% @list.bookmarks.each do |bookmark| %>
     <% movie = bookmark.movie %>
     <li><img src="<%= movie.poster_url %>" alt="<%= movie.title %>" style="height: 200px;"></li>
     <div><%= movie.title %> - rating: <%= movie.rating %></div>
@@ -25,7 +25,7 @@
 <br>
 <div class='container'>
   <h2>Reviews</h2>
-  <% @reviews.each do |review| %>
+  <% @list.reviews.each do |review| %>
   <p><%= review.rating %> stars - <%= review.comment %></p>
   <% end %>
   <br>
