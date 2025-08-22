@@ -23,6 +23,18 @@
   <% end %>
 </div>
 <br>
-<div>
-
+<div class='container'>
+  <h2>Reviews</h2>
+  <% @reviews.each do |review| %>
+  <p><%= review.rating %> stars - <%= review.comment %></p>
+  <% end %>
+  <br>
+  <h3>Add your review</h3>
+  <%= simple_form_for [@list, @review] do |f| %>
+    <%= f.error_notification %>
+    <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
+    <%= f.input :comment %>
+    <%= f.input :rating %>
+    <%= f.submit "Create Review", class: "btn btn-primary" %>
+  <% end %>
 </div>
